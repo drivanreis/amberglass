@@ -1,0 +1,45 @@
+/* src/index.css - Reset e Variáveis Globais */
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variáveis CSS (Paleta de Cores, Fontes) */
+:root {
+  --primary-color: #3498db;     /* Azul principal */
+  --secondary-color: #2ecc71;   /* Verde secundário */
+  --text-color: #333;          /* Cor de texto padrão */
+  --background-color: #f4f4f4; /* Cor de fundo geral */
+  --font-family-sans: 'Roboto', sans-serif;
+  --font-family-serif: 'Merriweather', serif;
+}
+
+/* Estilos globais para o corpo da página */
+body {
+  font-family: var(--font-family-sans);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.6;
+}
+
+/* Estilos básicos para links, títulos, etc. */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 1em;
+}
