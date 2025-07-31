@@ -1,5 +1,4 @@
 #!/bin/bash
-# script-deploy.sh
 
 # Abort on errors
 set -e
@@ -22,24 +21,22 @@ echo "⚙️  Criando nova build na pasta dist com Vite..."
 npm run build
 
 echo "💾 Commitando alterações no branch main..."
-# Verifica se há alterações para comitar antes de tentar o commit
 if ! git diff --quiet --exit-code; then
+    echo "ℹ️ Nenhuma alteração de código-fonte para comitar no branch main."
+else
     git add .
     TIMESTAMP=$(get_timestamp)
     git commit -m "Build: Nova pasta dist $TIMESTAMP"
-    echo "✅ Alterações commitadas no branch main."
-else
-    echo "ℹ️ Nenhuma alteração para comitar no branch main."
+    echo "✅ Alterações de código-fonte commitadas no branch main."
 fi
-# Envia as alterações da main para o remoto
 git push origin main
 
-echo "⏳ Aguardando 15 segundos para garantir atualização do GitHub..."
+echo "⏳ Aguardando 15 segundos para garantir atualização do GitHub antes do deploy..."
 sleep 15
 
-echo "🚀 Enviando conteúdo da pasta dist para a branch gh-pages (forçado)..."
-
-git push origin $(git subtree split --prefix dist main):refs/heads/gh-pages --force
+echo "🚀 Enviando conteúdo da pasta dist para a branch gh-pages usando 'gh-pages' pacote..."
+# ESTA É A LINHA CRUCIALMENTE DIFERENTE:
+npm run deploy # <--- ESTA LINHA CHAMA O SCRIPT DEPLOY DO SEU PACKAGE.JSON
 
 echo "⏳ Aguardando 20 segundos para publicação no GitHub Pages..."
 sleep 20
