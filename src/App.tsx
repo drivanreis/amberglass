@@ -1,3 +1,5 @@
+// File: src/App.tsx
+
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -18,7 +20,8 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
-      <BrowserRouter basename={import.meta.env.DEV ? '/' : '/amber-glass'}>
+      {/* Mude '/amber-glass' para '/amberglass' */}
+      <BrowserRouter basename={import.meta.env.DEV ? '/' : '/amberglass'}> {/* <-- CORRIGIDO AQUI! */}
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
