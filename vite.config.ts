@@ -16,5 +16,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: 'amberglass',
+  base: '/amberglass/', // <-- TEM QUE ESTAR EXATAMENTE ASSIM!
 }));
