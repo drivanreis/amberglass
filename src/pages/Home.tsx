@@ -21,8 +21,8 @@ const Home = () => {
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hero-bg.jpg"
-            alt="Caminho da imagem = /images/hero-bg.jpg"
+            src={`/amberglass/images/back-graund/hero-bg.jpg`}
+            alt="Caminho do background da imagem = /images/back-graund/hero-bg.jpg"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-900/30" />

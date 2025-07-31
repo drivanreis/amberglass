@@ -20,8 +20,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
-      {/* Mude '/amber-glass' para '/amberglass' */}
-      <BrowserRouter basename={import.meta.env.DEV ? '/' : '/amberglass'}> {/* <-- CORRIGIDO AQUI! */}
+      <BrowserRouter basename='/amberglass'>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>

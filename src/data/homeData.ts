@@ -9,9 +9,9 @@ export const homeProducts = [
     // Agora 'images' é um array de caminhos de imagem
     images: [
 
-      '/images/portas/porta-1.jpg',
-      '/images/portas/porta-2.jpg',
-      '/images/portas/porta-3.jpg',
+      '/amberglass/images/portas/porta-1.jpg',
+      '/amberglass/images/portas/porta-2.jpg',
+      '/amberglass/images/portas/porta-3.jpg',
     ],
   },
   {
