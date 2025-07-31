@@ -1,29 +1,40 @@
-// src/App.tsx
-import './App.css'; // Vamos manter esse arquivo por enquanto, mas limpo
+import { Toaster } from '@/components/ui/sonner';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import Products from './pages/Products';
+import Contact from './pages/Contact';
+import Faq from './pages/Faq';
+import NotFound from './pages/NotFound';
+import ScrollToTop from './components/utils/ScrollToTop';
 
-function App() {
-  return (
-    <>
-      {/* Header Component - Será criado em breve */}
-      <header style={{ padding: '20px', backgroundColor: '#f0f0f0', textAlign: 'center' }}>
-        <h1>Header placeholder</h1>
-        {/* Aqui virá o componente Header */}
-      </header>
+const queryClient = new QueryClient();
 
-      {/* Main Content Area - Onde as sections e o conteúdo específico da página irão */}
-      <main style={{ minHeight: 'calc(100vh - 120px)', padding: '20px' }}>
-        <h2>Main Content Area</h2>
-        <p>Este é o conteúdo principal que mudará por página.</p>
-        {/* Aqui virão as Sections ou o conteúdo da página atual */}
-      </main>
-
-      {/* Footer Component - Será criado em breve */}
-      <footer style={{ padding: '20px', backgroundColor: '#e0e0e0', textAlign: 'center' }}>
-        <p>&copy; 2025 Seu Nome. Todos os direitos reservados.</p>
-        {/* Aqui virá o componente Footer */}
-      </footer>
-    </>
-  );
-}
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <BrowserRouter basename={import.meta.env.DEV ? '/' : '/amber-glass'}>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="sobre" element={<About />} />
+            <Route path="servicos" element={<Services />} />
+            <Route path="produtos" element={<Products />} />
+            <Route path="contato" element={<Contact />} />
+            <Route path="faq" element={<Faq />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <Toaster />
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;

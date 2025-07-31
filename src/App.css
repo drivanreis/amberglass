@@ -1,0 +1,27 @@
+/* File: src/App.css */
+
+/* ... outros estilos que você possa ter ... */
+
+/* Adicione este bloco para teste */
+.test-fade-in {
+  opacity: 0;
+  transition: opacity 5s ease-in-out; /* Duração bem longa para ser visível */
+}
+
+.test-fade-in.is-visible {
+  opacity: 1;
+}
+
+/* File: src/App.css */
+
+/* ... outros estilos que você possa ter ... */
+
+/* Adicione este bloco para teste */
+.test-fade-in {
+  opacity: 0;
+  transition: opacity 5s ease-in-out; /* Duração bem longa para ser visível */
+}
+
+.test-fade-in.is-visible {
+  opacity: 1;
+}
