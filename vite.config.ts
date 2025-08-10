@@ -1,20 +1,32 @@
+// vite.config.ts (do projeto AmberGlass)
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { viteSourceLocator } from "@metagptx/vite-plugin-source-locator";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({ // <<< Note que removemos '({ mode }) =>'
   plugins: [
-    viteSourceLocator({
-      prefix: "mgx",
-    }),
+    // Mantenha viteSourceLocator se for usar, caso contrário remova:
+    // viteSourceLocator({
+    //  prefix: "mgx",
+    // }),
     react(),
   ],
+  // >>> ADICIONE ESTA LINHA CRÍTICA <<<
+  base: '/amberglass/', // Isso define a base para ambos dev e build
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: '/amberglass/', // <-- TEM QUE ESTAR EXATAMENTE ASSIM!
-}));
+  // Se houver qualquer outro bloco 'server' ou 'build' que possa estar conflitante,
+  // ou se você não precisar de configurações específicas para o servidor de dev, pode remover.
+  // Exemplo de bloco server que NÃO deve conflitar com 'base':
+  // server: {
+  //   port: 5173,
+  //   host: true,
+  // }
+});
